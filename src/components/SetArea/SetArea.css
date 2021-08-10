@@ -1,0 +1,10 @@
+.set {
+  position: relative;
+  border: 2px solid rgb(235, 14, 14);
+  cursor: pointer;
+  width: 7vw;
+  height: 9.8vw;
+  border-radius: 0.3vw;
+  opacity: 0.5;
+  background-color: black;
+}

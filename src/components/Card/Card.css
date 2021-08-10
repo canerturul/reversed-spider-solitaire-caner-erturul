@@ -1,0 +1,95 @@
+.card {
+  position: relative;
+  cursor: pointer;
+  width: 7vw;
+  height: 9.8vw;
+  border-radius: 0.7vw;
+  font-family: "Poker";
+  font-size: 1.2vw;
+}
+
+.card__rank-left {
+  text-align: left;
+  margin-left: 0.2vw;
+  padding-top: 0.3vw;
+}
+
+.card__rank-right {
+  text-align: left;
+  position: relative;
+  transform: rotate(180deg);
+  margin-right: 0.4vw;
+  padding-bottom: 0.4vw;
+}
+
+.card__down {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("../../assets/playing-card.jpg");
+  text-decoration: transparent;
+  margin-bottom: -8.5vw;
+}
+
+.card__down > .card__content {
+  visibility: hidden;
+}
+
+.card__selected {
+  box-shadow: 10px 10px 12px black !important;
+  border: 2px solid #fb483f;
+}
+
+.card:hover {
+  box-shadow: 4px 4px 10px #fb483f;
+}
+
+.small-heart {
+  background: url("../../assets/heart.png") #000000;
+  background-size: 10%;
+}
+.heart {
+  background: url("../../assets/heart.png") #000000;
+  color: #fb483f;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
+  display: flex;
+  justify-content: space-between;
+  border: solid 1px #fb483f;
+}
+
+@media screen and (max-width: 1390px) and (min-width: 1200px) {
+  .card__content {
+    font-size: 12px;
+  }
+  .card__selected {
+    border: 2px solid #fb483f;
+    box-shadow: none !important;
+  }
+}
+
+@media screen and (max-width: 1199px) and (min-width: 781px) {
+  .card__content {
+    font-size: 9px;
+  }
+  .card__selected {
+    border: 2px solid #fb483f;
+    box-shadow: none !important;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .card__content {
+    font-size: 7.5px;
+  }
+  .card__selected {
+    border: 2px solid #fb483f;
+    box-shadow: none !important;
+  }
+}
+
+@font-face {
+  font-family: "Poker";
+  src: local("Poker"),
+    url(../../assets/font/Blue\ Spirits\ Alt.otf) format("truetype");
+}
