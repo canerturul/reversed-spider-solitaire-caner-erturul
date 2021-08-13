@@ -33,3 +33,6 @@
   flex-direction: row;
   gap: 30px;
 }
+.card__stack {
+  margin-bottom: -7vw;
+}

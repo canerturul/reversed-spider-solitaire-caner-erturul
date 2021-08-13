@@ -3,18 +3,22 @@ import { prepareCards } from "../logic/prepare-cards";
 import Card from "../components/Card/Card";
 import Header from "../components/Header/Header";
 import SetArea from "../components/SetArea/SetArea";
+import { selectCard } from "../logic/select-card";
 
 import "./Home.css";
 
 export default function Home() {
   const [cards, setcards] = useState({});
-  const [cardsets, setcardsets] = useState({
-    totalSet: 8,
-    sets: [],
-  });
+
   const [game, setgame] = useState({
     cards: [],
     decks: [],
+    selected: [],
+    selectedDeck: [],
+    selectedCard: "",
+    completedSets: [],
+    completedSetNumber: 1,
+    totalSet: 8,
   });
 
   useEffect(() => {
@@ -40,8 +44,18 @@ export default function Home() {
               ))}
           </div>
           <div className="set-area">
-            {[...Array(cardsets.totalSet)].map((index) => {
-              return <SetArea key={index} />;
+            {[...Array(game.totalSet)].map((a, index) => {
+              console.log(index);
+              return index < game.completedSetNumber ? (
+                <Card
+                  key={index}
+                  card={{ rank: "A", suit: "heart" }}
+                  isSelected={false}
+                  isDown={false}
+                />
+              ) : (
+                <SetArea key={index} />
+              );
             })}
           </div>
         </div>
@@ -54,6 +68,9 @@ export default function Home() {
                   key={card.rank + " " + card.suit + " " + card.deck + " 0"}
                   id={card.rank + " " + card.suit + " " + card.deck}
                   className="card__wrapper card__stack"
+                  onClick={(e) => {
+                    selectCard(card, deck, null, game, setgame);
+                  }}
                 >
                   <Card
                     key={card.rank + " " + card.suit + " " + card.deck}
