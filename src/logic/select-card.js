@@ -13,10 +13,17 @@ function getCardRank(rank) {
   }
 }
 
-export const selectCard = (card, deck, holder, game, setgame) => {
+export const selectCard = (card, deck, emptyArea, game, setgame) => {
   const tempCard = card;
 
+  if (emptyArea && game.selectedCard !== "" && game.selectedCard.rank === "A") {
+    moveCards(deck, game.selectedDeck, game.selectedCard, setgame, game);
+    removeSelect(game, setgame);
+  }
   if (game.selectedCard === "") {
+    if (emptyArea) {
+      return;
+    }
     if (isMovable(card, deck)) {
       tempCard.isSelected = true;
       var tempDeck = [...deck];
@@ -139,7 +146,7 @@ const checkDeckHasSet = (deck) => {
   return false;
 };
 
-const isSetCompleted = (deck, game, setgame) => {
+export const isSetCompleted = (deck, game, setgame) => {
   const isHasSet = checkDeckHasSet(deck);
 
   if (isHasSet) {

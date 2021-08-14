@@ -4,6 +4,8 @@ import Card from "../components/Card/Card";
 import Header from "../components/Header/Header";
 import SetArea from "../components/SetArea/SetArea";
 import { selectCard } from "../logic/select-card";
+import { distributeCards } from "../logic/distribute-card";
+import EmptyDeck from "../components/EmptyDeck/EmptyDeck";
 
 import "./Home.css";
 
@@ -36,7 +38,12 @@ export default function Home() {
       <Header />
       <div className="game-area">
         <div className="game-top">
-          <div className="dealt-cards">
+          <div
+            className="dealt-cards"
+            onClick={() => {
+              distributeCards(game, setgame);
+            }}
+          >
             {game.decks[10] &&
               game.decks[10].length > 0 &&
               game.decks[10].map((deck, index) => (
@@ -45,7 +52,6 @@ export default function Home() {
           </div>
           <div className="set-area">
             {[...Array(game.totalSet)].map((a, index) => {
-              console.log(index);
               return index < game.completedSetNumber ? (
                 <Card
                   key={index}
@@ -62,25 +68,37 @@ export default function Home() {
 
         <div className="game-cards">
           {game.decks.slice(0, 10).map((deck, index) => (
-            <div key={index + " 1"} deck={deck}>
-              {deck.map((card, key) => (
+            <>
+              {deck.length === 0 ? (
                 <div
-                  key={card.rank + " " + card.suit + " " + card.deck + " 0"}
-                  id={card.rank + " " + card.suit + " " + card.deck}
-                  className="card__wrapper card__stack"
-                  onClick={(e) => {
-                    selectCard(card, deck, null, game, setgame);
+                  onClick={() => {
+                    selectCard("", deck, true, game, setgame);
                   }}
                 >
-                  <Card
-                    key={card.rank + " " + card.suit + " " + card.deck}
-                    card={card}
-                    isSelected={card.isSelected}
-                    isDown={card.isDown}
-                  />
+                  <EmptyDeck key={index} />
                 </div>
-              ))}
-            </div>
+              ) : (
+                <div key={index + " 1"} deck={deck}>
+                  {deck.map((card, key) => (
+                    <div
+                      key={card.rank + " " + card.suit + " " + card.deck + " 0"}
+                      id={card.rank + " " + card.suit + " " + card.deck}
+                      className="card__wrapper card__stack"
+                      onClick={(e) => {
+                        selectCard(card, deck, null, game, setgame);
+                      }}
+                    >
+                      <Card
+                        key={card.rank + " " + card.suit + " " + card.deck}
+                        card={card}
+                        isSelected={card.isSelected}
+                        isDown={card.isDown}
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </>
           ))}
         </div>
       </div>

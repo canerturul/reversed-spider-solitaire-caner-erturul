@@ -6,6 +6,7 @@
     rgba(1, 1, 1, 0.4738270308123249) 50%,
     rgba(1, 1, 1, 1) 100%
   );
+  height: 100vh;
 }
 
 @media (prefers-reduced-motion: no-preference) {

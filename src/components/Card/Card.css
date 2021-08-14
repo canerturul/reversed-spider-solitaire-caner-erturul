@@ -35,7 +35,10 @@
 }
 
 .card__selected {
-  box-shadow: 10px 10px 12px black !important;
+  /*   box-shadow: 10px 10px 12px black !important;
+
+ */
+  box-shadow: 0 14px 34px rgb(246 246 247 / 70%) !important;
   border: 2px solid #fb483f;
 }
 
