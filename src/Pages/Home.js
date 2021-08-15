@@ -11,7 +11,6 @@ import "./Home.css";
 
 export default function Home() {
   const [cards, setcards] = useState({});
-
   const [game, setgame] = useState({
     cards: [],
     decks: [],
@@ -19,11 +18,23 @@ export default function Home() {
     selectedDeck: [],
     selectedCard: "",
     completedSets: [],
-    completedSetNumber: 1,
+    completedSetNumber: 0,
     totalSet: 8,
+    score: 0,
   });
 
   useEffect(() => {
+    const checkBestScore = () => {
+      const bestScore = +localStorage.getItem("bestScore");
+      const gameScore = game.score;
+      if (!bestScore || bestScore < gameScore) {
+        localStorage.setItem("bestScore", gameScore);
+      }
+    };
+    checkBestScore();
+  }, [game.score]);
+
+  const createGame = () => {
     const initVal = prepareCards();
     setcards(() => ({ cards: initVal.cards }));
     setgame((prevState) => ({
@@ -31,11 +42,31 @@ export default function Home() {
       cards: initVal.cards,
       decks: initVal.decks,
     }));
+  };
+
+  useEffect(() => {
+    createGame();
   }, []);
+
+  const restartButtonHandler = () => {
+    setgame((prevState) => ({
+      ...prevState,
+      cards: [],
+      decks: [],
+      selected: [],
+      selectedDeck: [],
+      selectedCard: "",
+      completedSets: [],
+      completedSetNumber: 0,
+      totalSet: 8,
+      score: 0,
+    }));
+    createGame();
+  };
 
   return (
     <div className="home">
-      <Header />
+      <Header game={game} onRestartClick={restartButtonHandler} />
       <div className="game-area">
         <div className="game-top">
           <div

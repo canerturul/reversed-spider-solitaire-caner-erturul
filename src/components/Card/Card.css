@@ -39,26 +39,26 @@
 
  */
   box-shadow: 0 14px 34px rgb(246 246 247 / 70%) !important;
-  border: 2px solid #fb483f;
+  border: 2px solid rgba(206, 27, 7);
 }
 
 .card:hover {
-  box-shadow: 4px 4px 10px #fb483f;
+  box-shadow: 4px 4px 10px rgba(206, 27, 7);
 }
 
 .small-heart {
-  background: url("../../assets/heart.png") #000000;
+  background: url("../../assets/heart2.png") #000000;
   background-size: 10%;
 }
 .heart {
-  background: url("../../assets/heart.png") #000000;
-  color: #fb483f;
+  background: url("../../assets/heart2.png") #000000;
+  color: rgba(206, 27, 7);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 50%;
   display: flex;
   justify-content: space-between;
-  border: solid 1px #fb483f;
+  border: solid 1px rgba(206, 27, 7);
 }
 
 @media screen and (max-width: 1390px) and (min-width: 1200px) {
@@ -66,7 +66,7 @@
     font-size: 12px;
   }
   .card__selected {
-    border: 2px solid #fb483f;
+    border: 2px solid rgba(206, 27, 7);
     box-shadow: none !important;
   }
 }
@@ -76,7 +76,7 @@
     font-size: 9px;
   }
   .card__selected {
-    border: 2px solid #fb483f;
+    border: 2px solid rgba(206, 27, 7);
     box-shadow: none !important;
   }
 }
@@ -86,7 +86,7 @@
     font-size: 7.5px;
   }
   .card__selected {
-    border: 2px solid #fb483f;
+    border: 2px solid rgba(206, 27, 7);
     box-shadow: none !important;
   }
 }

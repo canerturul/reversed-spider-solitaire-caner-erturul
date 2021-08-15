@@ -1,7 +1,14 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
 .game-area {
   display: flex;
   flex-direction: column;
   gap: 70px;
+  height: 31.9vw;
 }
 .game-top {
   display: flex;

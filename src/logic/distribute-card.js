@@ -1,4 +1,4 @@
-import { isSetCompleted } from "./select-card";
+import { isSetCompleted, removeSelect } from "./select-card";
 
 export const distributeCards = (game, setgame) => {
   const tempDecks = [...game.decks];
@@ -15,7 +15,7 @@ export const distributeCards = (game, setgame) => {
     ...prevState,
     decks: tempDecks,
   }));
-
+  removeSelect(game, setgame);
   tempDecks.forEach((deck) => {
     isSetCompleted(deck, game, setgame);
   });

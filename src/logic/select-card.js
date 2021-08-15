@@ -103,13 +103,14 @@ const moveCards = (
     setgame((prevState) => ({
       ...prevState,
       decks: tempDeck,
+      score: game.score + 10,
     }));
   } catch (error) {
     console.log(error);
   }
 };
 
-const removeSelect = (game, setgame) => {
+export const removeSelect = (game, setgame) => {
   if (game.selectedCard !== "") {
     const newDecks = [...game.decks];
     let i = 0;
@@ -132,6 +133,8 @@ const removeSelect = (game, setgame) => {
   }
 };
 
+export const checkIsDown = (card) => card.isDown === false;
+
 // check deck array and if deck has a set return booelan value
 const checkDeckHasSet = (deck) => {
   var ranks = deck.map((card) => {
@@ -140,7 +143,14 @@ const checkDeckHasSet = (deck) => {
   const expectedSetArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 
   if (JSON.stringify(expectedSetArray) === JSON.stringify(ranks.slice(-13))) {
-    return true;
+    let tempDeck = [...deck];
+    const checkAllCardDown = tempDeck.slice(-13).every(checkIsDown);
+
+    if (checkAllCardDown) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   return false;
@@ -163,6 +173,7 @@ export const isSetCompleted = (deck, game, setgame) => {
       ...prevState,
       decks: tempDecks,
       completedSetNumber: completedSetNumber + 1,
+      point: game.score + 100,
     }));
   }
 
