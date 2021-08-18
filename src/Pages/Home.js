@@ -1,27 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { prepareCards } from "../logic/prepare-cards";
+import React, { useEffect } from "react";
+
 import Card from "../components/Card/Card";
 import Header from "../components/Header/Header";
-import SetArea from "../components/SetArea/SetArea";
-import { selectCard } from "../logic/select-card";
-import { distributeCards } from "../logic/distribute-card";
 import EmptyDeck from "../components/EmptyDeck/EmptyDeck";
+import GameOver from "../components/GameOver/GameOver";
+
+import useCreateGame from "../hooks/useCreateGame";
 
 import "./Home.css";
 
 export default function Home() {
-  const [cards, setcards] = useState({});
-  const [game, setgame] = useState({
-    cards: [],
-    decks: [],
-    selected: [],
-    selectedDeck: [],
-    selectedCard: "",
-    completedSets: [],
-    completedSetNumber: 0,
-    totalSet: 8,
-    score: 0,
-  });
+  const { game, selectCard, restartGame, distributeCards, undoGame } =
+    useCreateGame();
 
   useEffect(() => {
     const checkBestScore = () => {
@@ -34,55 +24,29 @@ export default function Home() {
     checkBestScore();
   }, [game.score]);
 
-  const createGame = () => {
-    const initVal = prepareCards();
-    setcards(() => ({ cards: initVal.cards }));
-    setgame((prevState) => ({
-      ...prevState,
-      cards: initVal.cards,
-      decks: initVal.decks,
-    }));
-  };
-
-  useEffect(() => {
-    createGame();
-  }, []);
-
-  const restartButtonHandler = () => {
-    setgame((prevState) => ({
-      ...prevState,
-      cards: [],
-      decks: [],
-      selected: [],
-      selectedDeck: [],
-      selectedCard: "",
-      completedSets: [],
-      completedSetNumber: 0,
-      totalSet: 8,
-      score: 0,
-    }));
-    createGame();
-  };
-
   return (
     <div className="home">
-      <Header game={game} onRestartClick={restartButtonHandler} />
+      <Header
+        game={game}
+        onRestartClick={restartGame}
+        onUndoGameClick={undoGame}
+      />
       <div className="game-area">
         <div className="game-top">
           <div
             className="dealt-cards"
             onClick={() => {
-              distributeCards(game, setgame);
+              distributeCards();
             }}
           >
             {game.decks[10] &&
               game.decks[10].length > 0 &&
               game.decks[10].map((deck, index) => (
-                <div key={index} className="card dealt-cards__down"></div>
+                <div key={index} className="card dealt-cards-down"></div>
               ))}
           </div>
           <div className="set-area">
-            {[...Array(game.totalSet)].map((a, index) => {
+            {[...Array(game.totalSet)].map((set, index) => {
               return index < game.completedSetNumber ? (
                 <Card
                   key={index}
@@ -91,7 +55,7 @@ export default function Home() {
                   isDown={false}
                 />
               ) : (
-                <SetArea key={index} />
+                <EmptyDeck key={index} />
               );
             })}
           </div>
@@ -103,24 +67,32 @@ export default function Home() {
               {deck.length === 0 ? (
                 <div
                   onClick={() => {
-                    selectCard("", deck, true, game, setgame);
+                    selectCard("", deck, true);
                   }}
+                  draggable={true}
+                  onDragStart={() => selectCard("", deck, true)}
+                  onDrop={() => selectCard("", deck, true)}
+                  onDragOver={(e) => e.preventDefault()}
                 >
                   <EmptyDeck key={index} />
                 </div>
               ) : (
-                <div key={index + " 1"} deck={deck}>
+                <div key={index + " 1"}>
                   {deck.map((card, key) => (
                     <div
-                      key={card.rank + " " + card.suit + " " + card.deck + " 0"}
-                      id={card.rank + " " + card.suit + " " + card.deck}
-                      className="card__wrapper card__stack"
+                      key={`${card.rank}${card.deck}`}
+                      id={`${card.rank}${card.deck}`}
+                      className="card-wrapper card-stack"
                       onClick={(e) => {
-                        selectCard(card, deck, null, game, setgame);
+                        selectCard(card, deck, null);
                       }}
+                      draggable={true}
+                      onDragStart={() => selectCard(card, deck, null)}
+                      onDrop={() => selectCard(card, deck, null)}
+                      onDragOver={(e) => e.preventDefault()}
                     >
                       <Card
-                        key={card.rank + " " + card.suit + " " + card.deck}
+                        key={`${card.rank} ${card.deck}`}
                         card={card}
                         isSelected={card.isSelected}
                         isDown={card.isDown}
@@ -133,6 +105,9 @@ export default function Home() {
           ))}
         </div>
       </div>
+      {game.completedSetNumber === game.totalSet && (
+        <GameOver score={game.score} restartGame={restartGame} />
+      )}
     </div>
   );
 }

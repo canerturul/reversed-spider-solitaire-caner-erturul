@@ -10,11 +10,13 @@
 }
 .App-Bg {
   opacity: 0.6;
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
-  height: 187%;
+  height: auto;
+  min-width: 100%;
+  min-height: 100%;
 }
 .App-Content {
   position: relative;

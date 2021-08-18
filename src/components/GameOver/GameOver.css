@@ -1,0 +1,55 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1.5vw;
+  z-index: 9999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 30vw;
+  min-height: 15vw;
+  padding: 15px;
+  border-radius: 10px;
+  transform: translate(-50%, -50%);
+  background: #000;
+  color: rgba(206, 27, 7);
+  border: solid 1px rgba(206, 27, 7);
+}
+
+.modal-bg {
+  z-index: 9998;
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.modal-title {
+  font-size: 1.5vw;
+  font-weight: bold;
+}
+.modal-score {
+  font-size: 1.2vw;
+  font-weight: bold;
+}
+
+.new-game {
+  background-color: rgba(206, 27, 7);
+  border: none;
+  border-radius: 5px;
+  width: 10vw;
+  padding: 1vw;
+  font-size: 1vw;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0px 6px 18px -5px rgba(237, 103, 85, 1);
+}
+.new-game:hover {
+  box-shadow: 0px 6px 18px -5px rgba(237, 103, 85, 1);
+  color: #000;
+}

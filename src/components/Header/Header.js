@@ -1,76 +1,64 @@
-import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 import Timer from "../Timer/Timer";
 
 import restartIcon from "../../assets/icons/restart.ico";
 import scoreIcon from "../../assets/icons/trophy-64.ico";
-import BestScoreIcon from "../../assets/icons/chess.ico";
+import bestScoreIcon from "../../assets/icons/chess.ico";
+import undoIcon from "../../assets/icons/undo.ico";
+
+import useTimer from "../../hooks/useTimer";
 
 import "./Header.css";
 
-export default function Header({ game, onRestartClick }) {
-  const [time, settime] = useState({
-    second: "00",
-    minute: "00",
-    counter: 0,
-  });
+function Header({ game, onRestartClick, onUndoGameClick }) {
+  const { time, resetTimer } = useTimer();
 
   const onRestartButtonClick = () => {
-    settime((prevState) => ({
-      ...prevState,
-      second: "00",
-      minute: "00",
-      counter: 0,
-    }));
+    resetTimer();
     onRestartClick();
   };
   const bestScore = +localStorage.getItem("bestScore");
 
-  useEffect(() => {
-    let IntervalId;
-
-    IntervalId = setInterval(() => {
-      const secondCounter = time.counter % 60;
-      const minuteCounter = Math.floor(time.counter / 60);
-      const computedSecond =
-        String(secondCounter).length === 1
-          ? `0${secondCounter}`
-          : secondCounter;
-      const computedMinute =
-        String(minuteCounter).length === 1
-          ? `0${minuteCounter}`
-          : minuteCounter;
-
-      settime((prevState) => ({
-        second: computedSecond,
-        minute: computedMinute,
-        counter: prevState.counter + 1,
-      }));
-    }, 1000);
-    return () => {
-      clearInterval(IntervalId);
-    };
-  }, [time.counter]);
-
   return (
     <div className="header">
-      <Timer time={time} />
+      <Timer time={time} className="header-element" />
       <div className="best-score header-element">
-        <img className="icon" src={BestScoreIcon} alt="Best Score Icon" />
-        <span className="best-score__text">{bestScore}</span>
+        <img className="icon" src={bestScoreIcon} alt="Best Score Icon" />
+        <span className="best-score-text">{bestScore}</span>
       </div>
+
       <div className="score header-element">
         <img className="icon" src={scoreIcon} alt="score icon" />
         <span className="text">{game.score}</span>
       </div>
+
+      <h1 className="title">Spider Solitare</h1>
+
       <button
-        className="restart-btn"
+        className="restart-btn header-element"
         id="restart"
         onClick={onRestartButtonClick}
       >
         <img className="icon" src={restartIcon} alt="restart" />
         <span className="text">Restart</span>
       </button>
+      <button
+        className="undo-btn header-element"
+        id="undo"
+        onClick={onUndoGameClick}
+      >
+        <img className="icon" src={undoIcon} alt="restart" />
+        <span className="text">Undo</span>
+      </button>
     </div>
   );
 }
+
+Header.propTypes = {
+  game: PropTypes.object,
+  setgame: PropTypes.func,
+  onRestartClick: PropTypes.func,
+};
+
+export default Header;

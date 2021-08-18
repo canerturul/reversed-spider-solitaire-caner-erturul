@@ -13,3 +13,9 @@
   height: 2vw;
   width: 2vw;
 }
+@media (max-width: 768px) {
+  .timer {
+    padding: 5px 10px;
+    gap: 10px;
+  }
+}

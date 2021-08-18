@@ -5,24 +5,30 @@
   height: 9.8vw;
   border-radius: 0.7vw;
   font-family: "Poker";
-  font-size: 1.2vw;
+  font-size: 1.5vw;
 }
 
-.card__rank-left {
+.card-rank-left {
   text-align: left;
   margin-left: 0.2vw;
   padding-top: 0.3vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.card__rank-right {
+.card-rank-right {
   text-align: left;
   position: relative;
   transform: rotate(180deg);
   margin-right: 0.4vw;
   padding-bottom: 0.4vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.card__down {
+.card-down {
   background-size: contain;
   background-repeat: no-repeat;
   background-image: url("../../assets/playing-card.jpg");
@@ -30,11 +36,11 @@
   margin-bottom: -8.5vw;
 }
 
-.card__down > .card__content {
+.card-down > .card-content {
   visibility: hidden;
 }
 
-.card__selected {
+.card-selected {
   /*   box-shadow: 10px 10px 12px black !important;
 
  */
@@ -46,10 +52,11 @@
   box-shadow: 4px 4px 10px rgba(206, 27, 7);
 }
 
-.small-heart {
-  background: url("../../assets/heart2.png") #000000;
-  background-size: 10%;
+.card-suite-left,
+.card-suite-right {
+  margin-top: -0.3vw;
 }
+
 .heart {
   background: url("../../assets/heart2.png") #000000;
   color: rgba(206, 27, 7);
@@ -61,31 +68,31 @@
   border: solid 1px rgba(206, 27, 7);
 }
 
-@media screen and (max-width: 1390px) and (min-width: 1200px) {
-  .card__content {
+@media (max-width: 1390px) and (min-width: 1200px) {
+  /* .card-content {
     font-size: 12px;
-  }
-  .card__selected {
+  } */
+  .card-selected {
     border: 2px solid rgba(206, 27, 7);
     box-shadow: none !important;
   }
 }
 
-@media screen and (max-width: 1199px) and (min-width: 781px) {
-  .card__content {
-    font-size: 9px;
+@media (max-width: 1199px) and (min-width: 781px) {
+  .card-content {
+    font-size: 15px;
   }
-  .card__selected {
+  .card-selected {
     border: 2px solid rgba(206, 27, 7);
     box-shadow: none !important;
   }
 }
 
-@media screen and (max-width: 780px) {
-  .card__content {
-    font-size: 7.5px;
+@media (max-width: 780px) {
+  .card-content {
+    font-size: 10px;
   }
-  .card__selected {
+  .card-selected {
     border: 2px solid rgba(206, 27, 7);
     box-shadow: none !important;
   }

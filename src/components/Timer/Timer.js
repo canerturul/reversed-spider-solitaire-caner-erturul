@@ -1,8 +1,9 @@
 import React from "react";
 import icon from "../../assets/icons/timer.ico";
+import PropTypes from "prop-types";
 
 import "./Timer.css";
-export default function Timer({ time }) {
+function Timer({ time }) {
   return (
     <div className="timer">
       <img className="timer__icon" src={icon} alt="timer icon" />
@@ -14,3 +15,7 @@ export default function Timer({ time }) {
     </div>
   );
 }
+Timer.propTypes = {
+  time: PropTypes.object,
+};
+export default Timer;
