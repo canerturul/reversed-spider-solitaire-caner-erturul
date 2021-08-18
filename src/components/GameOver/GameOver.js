@@ -1,9 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import { Fireworks } from "fireworks-js/dist/react";
 import "./GameOver.css";
 
-export default function GameOver({ score, restartGame }) {
+function GameOver({ score, restartGame }) {
   const fireworksStyle = {
     left: 0,
     top: 0,
@@ -32,3 +33,9 @@ export default function GameOver({ score, restartGame }) {
     </div>
   );
 }
+
+GameOver.propTypes = {
+  score: PropTypes.number,
+  restartGame: PropTypes.func,
+};
+export default GameOver;

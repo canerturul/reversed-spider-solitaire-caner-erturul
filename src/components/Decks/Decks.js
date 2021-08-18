@@ -1,17 +1,20 @@
 import React from "react";
 
+import PropTypes from "prop-types";
+
 import Card from "../Card/Card";
 import EmptyDeck from "../EmptyDeck/EmptyDeck";
 
 import "./Decks.css";
 
-export default function Decks({ game, selectCard }) {
+function Decks({ game, selectCard }) {
   return (
     <div className="decks">
       {game.decks.slice(0, 10).map((deck, index) => (
-        <>
+        <div key={index}>
           {deck.length === 0 ? (
             <div
+              key={index}
               onClick={() => {
                 selectCard("", deck, true);
               }}
@@ -23,11 +26,11 @@ export default function Decks({ game, selectCard }) {
               <EmptyDeck key={index} />
             </div>
           ) : (
-            <div key={index + " 1"}>
-              {deck.map((card, key) => (
+            <div key={index}>
+              {deck.map((card, index) => (
                 <div
-                  key={`${card.rank}${card.deck}`}
-                  id={`${card.rank}${card.deck}`}
+                  key={`${card.rank}-${card.deck}-${index}`}
+                  id={`${card.rank}-${card.deck}-${index}`}
                   className="card-wrapper card-stack"
                   onClick={(e) => {
                     selectCard(card, deck, null);
@@ -38,7 +41,8 @@ export default function Decks({ game, selectCard }) {
                   onDragOver={(e) => e.preventDefault()}
                 >
                   <Card
-                    key={`${card.rank} ${card.deck}`}
+                    id={`${card.rank}-${card.deck}`}
+                    key={`${card.rank}-${card.deck}`}
                     card={card}
                     isSelected={card.isSelected}
                     isDown={card.isDown}
@@ -47,8 +51,14 @@ export default function Decks({ game, selectCard }) {
               ))}
             </div>
           )}
-        </>
+        </div>
       ))}
     </div>
   );
 }
+
+Decks.propTypes = {
+  game: PropTypes.object,
+  selectCard: PropTypes.func,
+};
+export default Decks;

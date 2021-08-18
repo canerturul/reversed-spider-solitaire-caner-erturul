@@ -1,8 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import "./CardPile.css";
 
-export default function CardPile({ game, distributeCards }) {
+function CardPile({ game, distributeCards }) {
   return (
     <div
       className="card-pile"
@@ -18,3 +19,10 @@ export default function CardPile({ game, distributeCards }) {
     </div>
   );
 }
+
+CardPile.propTypes = {
+  game: PropTypes.object,
+  selectCard: PropTypes.func,
+};
+
+export default CardPile;

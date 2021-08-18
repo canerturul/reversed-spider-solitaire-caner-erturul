@@ -10,6 +10,7 @@ import undoIcon from "../../assets/icons/undo.ico";
 import useTimer from "../../hooks/useTimer";
 
 import "./Header.css";
+import Button from "../Button/Button";
 
 function Header({ game, onRestartClick, onUndoGameClick }) {
   const { time, resetTimer } = useTimer();
@@ -18,6 +19,7 @@ function Header({ game, onRestartClick, onUndoGameClick }) {
     resetTimer();
     onRestartClick();
   };
+
   const bestScore = +localStorage.getItem("bestScore");
 
   return (
@@ -35,30 +37,20 @@ function Header({ game, onRestartClick, onUndoGameClick }) {
 
       <h1 className="title">Spider Solitare</h1>
 
-      <button
-        className="restart-btn header-element"
-        id="restart"
-        onClick={onRestartButtonClick}
-      >
-        <img className="icon" src={restartIcon} alt="restart" />
-        <span className="text">Restart</span>
-      </button>
-      <button
-        className="undo-btn header-element"
-        id="undo"
-        onClick={onUndoGameClick}
-      >
-        <img className="icon" src={undoIcon} alt="restart" />
-        <span className="text">Undo</span>
-      </button>
+      <Button
+        buttonClick={onRestartButtonClick}
+        buttonText="Restart"
+        icon={restartIcon}
+      />
+      <Button buttonClick={onUndoGameClick} buttonText="Undo" icon={undoIcon} />
     </div>
   );
 }
 
 Header.propTypes = {
   game: PropTypes.object,
-  setgame: PropTypes.func,
   onRestartClick: PropTypes.func,
+  onUndoGameClick: PropTypes.func,
 };
 
 export default Header;

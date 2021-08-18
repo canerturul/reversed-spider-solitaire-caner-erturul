@@ -20,7 +20,7 @@
     rgba(206, 27, 7, 0.4) 0px 4px 6px -1px,
     rgba(206, 27, 7, 0.4) 0px 1px 0px inset;
   font-size: 1.5vw;
-  padding: 10px 20px;
+  padding: 0.7vw 1.4vw;
   gap: 0.5vw;
 }
 
@@ -28,30 +28,6 @@
   height: 2vw;
   width: 2vw;
 }
-
-.restart-btn,
-.undo-btn {
-  cursor: pointer;
-  background-color: black;
-  color: rgba(206, 27, 7);
-  transition: box-shadow 1s;
-  border: solid 0.5px rgba(206, 27, 7, 0.4);
-}
-
-#restart:hover,
-#undo:hover {
-  border: solid 0.5px rgba(206, 27, 7, 0.4);
-  box-shadow: 0 10px 50px 0 rgba(206, 27, 7, 0.4);
-}
 .title {
   font-size: 2.5vw;
-}
-
-@media (max-width: 900px) {
-}
-@media (max-width: 767px) {
-  .header-element {
-    padding: 5px 10px;
-    gap: 10px;
-  }
 }
