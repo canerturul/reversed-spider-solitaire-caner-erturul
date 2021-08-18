@@ -1,0 +1,12 @@
+.card-pile {
+  display: flex;
+  flex-direction: row;
+}
+.card-pile-down {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("../../assets/playing-card.jpg");
+  text-decoration: transparent;
+  margin-right: -5.5vw;
+  height: 9.4vw;
+}

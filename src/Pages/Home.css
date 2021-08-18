@@ -15,30 +15,7 @@
   flex-direction: row;
   justify-content: space-around;
 }
-.dealt-cards {
-  display: flex;
-  flex-direction: row;
-}
-.dealt-cards-down {
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-image: url("../assets/playing-card.jpg");
-  text-decoration: transparent;
-  margin-right: -5.5vw;
-  height: 9.4vw;
-}
-.game-cards {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  padding: 0.8vw 0;
-}
 
-.set-area {
-  display: flex;
-  flex-direction: row;
-  gap: 2vw;
-}
 .card-stack {
   margin-bottom: -7vw;
 }
