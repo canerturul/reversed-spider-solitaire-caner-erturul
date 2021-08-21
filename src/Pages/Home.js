@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import useCreateGame from "../hooks/useCreateGame";
+import useCreateGame from "../hooks/useCreateGame/useCreateGame";
 
 import Header from "../components/Header/Header";
 import GameOver from "../components/GameOver/GameOver";
@@ -10,8 +10,15 @@ import Decks from "../components/Decks/Decks";
 import "./Home.css";
 
 export default function Home() {
-  const { game, selectCard, restartGame, distributeCards, undoGame } =
-    useCreateGame();
+  const {
+    game,
+    selectCard,
+    moveOperations,
+    moveOperationsForEmptyDeck,
+    restartGame,
+    distributeCards,
+    undoGame,
+  } = useCreateGame();
 
   useEffect(() => {
     const checkBestScore = () => {
@@ -39,7 +46,12 @@ export default function Home() {
         </div>
 
         <div className="game-decks">
-          <Decks game={game} selectCard={selectCard} />
+          <Decks
+            game={game}
+            selectCard={selectCard}
+            moveOperations={moveOperations}
+            moveOperationsForEmptyDeck={moveOperationsForEmptyDeck}
+          />
         </div>
       </div>
       {game.completedSetNumber === game.totalSet && (

@@ -7,7 +7,27 @@ import EmptyDeck from "../EmptyDeck/EmptyDeck";
 
 import "./Decks.css";
 
-function Decks({ game, selectCard }) {
+function Decks({
+  game,
+  selectCard,
+  moveOperations,
+  moveOperationsForEmptyDeck,
+}) {
+  const handleCardOperations = (card, deck) => {
+    if (game.selectedCard) {
+      moveOperations(card, deck);
+    } else {
+      selectCard(card, deck);
+    }
+  };
+  const handleEmptyDeckOperatios = (deck) => {
+    if (game.selectedCard) {
+      moveOperationsForEmptyDeck(deck);
+    } else {
+      return;
+    }
+  };
+
   return (
     <div className="decks">
       {game.decks.slice(0, 10).map((deck, index) => (
@@ -17,11 +37,11 @@ function Decks({ game, selectCard }) {
               data-testid="empty-deck"
               key={index}
               onClick={() => {
-                selectCard("", deck, true);
+                handleEmptyDeckOperatios(deck);
               }}
               draggable={true}
-              onDragStart={() => selectCard("", deck, true)}
-              onDrop={() => selectCard("", deck, true)}
+              onDragStart={() => handleEmptyDeckOperatios(deck)}
+              onDrop={() => handleEmptyDeckOperatios(deck)}
               onDragOver={(e) => e.preventDefault()}
             >
               <EmptyDeck key={index} />
@@ -35,11 +55,11 @@ function Decks({ game, selectCard }) {
                   id={`${card.rank}-${card.deck}-${index}`}
                   className="card-wrapper card-stack"
                   onClick={(e) => {
-                    selectCard(card, deck, null);
+                    handleCardOperations(card, deck);
                   }}
                   draggable={true}
-                  onDragStart={() => selectCard(card, deck, null)}
-                  onDrop={() => selectCard(card, deck, null)}
+                  onDragStart={() => handleCardOperations(card, deck)}
+                  onDrop={() => handleCardOperations(card, deck)}
                   onDragOver={(e) => e.preventDefault()}
                 >
                   <Card

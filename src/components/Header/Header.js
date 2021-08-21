@@ -7,7 +7,7 @@ import scoreIcon from "../../assets/icons/trophy-64.ico";
 import bestScoreIcon from "../../assets/icons/chess.ico";
 import undoIcon from "../../assets/icons/undo.ico";
 
-import useTimer from "../../hooks/useTimer";
+import useTimer from "../../hooks/useTimer/useTimer";
 
 import "./Header.css";
 import Button from "../Button/Button";
