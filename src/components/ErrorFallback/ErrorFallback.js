@@ -1,8 +1,10 @@
 import React from "react";
 
+import PropTypes from "prop-types";
+
 import "./ErrorFallback.css";
 
-export default function ErrorFallback({ error }) {
+function ErrorFallback({ error }) {
   return (
     <div role="alert">
       <p>Something went wrong</p>
@@ -10,3 +12,9 @@ export default function ErrorFallback({ error }) {
     </div>
   );
 }
+
+ErrorFallback.propTypes = {
+  error: PropTypes.object,
+};
+
+export default ErrorFallback;

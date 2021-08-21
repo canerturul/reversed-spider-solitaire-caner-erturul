@@ -2,30 +2,28 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { Fireworks } from "fireworks-js/dist/react";
+
 import "./GameOver.css";
 
 function GameOver({ score, restartGame }) {
-  const fireworksStyle = {
-    left: 0,
-    top: 0,
-    width: "100%",
-    height: "100%",
-    position: "fixed",
-  };
-  const onRestartClick = () => {
-    restartGame();
-  };
-
   return (
     <div>
-      <Fireworks style={fireworksStyle} />
+      <Fireworks
+        style={{
+          left: "0",
+          top: "0",
+          width: "100%",
+          height: "100%",
+          position: "fixed",
+        }}
+      />
       <div className="modal">
         <span className="modal-title">Congratilations YOU WIN!</span>
         <div className="modal-score">
           <span>SCORE : </span> <span>{score}</span>
         </div>
 
-        <button className="new-game" onClick={onRestartClick}>
+        <button className="new-game" onClick={restartGame}>
           NEW GAME
         </button>
       </div>

@@ -14,6 +14,7 @@ function Decks({ game, selectCard }) {
         <div key={index}>
           {deck.length === 0 ? (
             <div
+              data-testid="empty-deck"
               key={index}
               onClick={() => {
                 selectCard("", deck, true);
@@ -29,6 +30,7 @@ function Decks({ game, selectCard }) {
             <div key={index}>
               {deck.map((card, index) => (
                 <div
+                  data-testid="my-card"
                   key={`${card.rank}-${card.deck}-${index}`}
                   id={`${card.rank}-${card.deck}-${index}`}
                   className="card-wrapper card-stack"

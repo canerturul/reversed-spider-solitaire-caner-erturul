@@ -1,13 +1,14 @@
 import React from "react";
 
 import { times } from "lodash";
+import PropTypes from "prop-types";
 
 import Card from "../Card/Card";
 import EmptyDeck from "../EmptyDeck/EmptyDeck";
 
 import "./SetArea.css";
 
-export default function SetArea({ game }) {
+function SetArea({ game }) {
   return (
     <div className="set-area">
       {times(game.totalSet, (index) => {
@@ -25,3 +26,8 @@ export default function SetArea({ game }) {
     </div>
   );
 }
+
+SetArea.propTypes = {
+  game: PropTypes.object,
+};
+export default SetArea;

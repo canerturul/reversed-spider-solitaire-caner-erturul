@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import * as _ from "lodash";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function useCreateGame() {
-  const [game, setGame] = useState({
+  const initialState = {
     cards: [],
     decks: [],
     selected: [],
@@ -15,26 +15,17 @@ export default function useCreateGame() {
     completedSetNumber: 0,
     totalSet: 8,
     score: 0,
-  });
+  };
+  const [game, setGame] = useState(initialState);
   const [undo, setUndo] = useState({});
 
   const restartGame = () => {
-    setGame({
-      cards: [],
-      decks: [],
-      selected: [],
-      selectedDeck: [],
-      selectedCard: "",
-      completedSets: [],
-      completedSetNumber: 0,
-      totalSet: 8,
-      score: 0,
-    });
+    setGame(initialState);
     setUndo({});
     createGame();
   };
 
-  const prepareCards = () => {
+  const prepareCards = useCallback(() => {
     let cards = [];
     const ranks = [
       "A",
@@ -54,7 +45,7 @@ export default function useCreateGame() {
 
     //Creation of 8 card decks
     ranks.forEach((rank) => {
-      _.times(8, (i) => {
+      _.times(game.totalSet, (i) => {
         cards.push({
           rank: rank,
           suit: "heart",
@@ -65,7 +56,7 @@ export default function useCreateGame() {
       });
     });
 
-    //shuffling and dealing cards
+    //shuffling and chunking cards
     let shuffledCards = _.shuffle(cards);
 
     const firstDeckSize = 6;
@@ -90,21 +81,22 @@ export default function useCreateGame() {
       decks: mergedDecks,
       cards: shuffledCards,
     };
-  };
+  }, [game.totalSet]);
 
   //prepare cards and set initial game state
-  const createGame = () => {
+
+  const createGame = useCallback(() => {
     const initVal = prepareCards();
     setGame((prevState) => ({
       ...prevState,
       cards: initVal.cards,
       decks: initVal.decks,
     }));
-  };
+  }, [prepareCards]);
 
   useEffect(() => {
     createGame();
-  }, []);
+  }, [createGame]);
 
   //move notify
   const moveNotify = () =>
@@ -133,12 +125,13 @@ export default function useCreateGame() {
   const selectCard = (card, deck, emptyArea) => {
     const tempCard = card;
 
-    if (emptyArea && game.selectedCard !== "") {
+    if (emptyArea && game.selectedCard) {
       moveCards(deck, game.selectedDeck, game.selectedCard);
       removeSelect();
+      return;
     }
 
-    if (game.selectedCard === "") {
+    if (!game.selectedCard) {
       if (emptyArea) {
         return;
       }
@@ -147,6 +140,11 @@ export default function useCreateGame() {
         var tempDeck = [...deck];
 
         const prevGameDecks = _.cloneDeep(game.decks);
+
+        var selectedCards = tempDeck.slice(deck.indexOf(card));
+        selectedCards.forEach((curCard) => {
+          curCard.isSelected = true;
+        });
 
         setUndo({
           decks: [...prevGameDecks],
@@ -158,12 +156,7 @@ export default function useCreateGame() {
           completedSetNumber: game.completedSetNumber,
           score: game.score,
         });
-
-        var selectedCards = tempDeck.slice(deck.indexOf(card));
-        selectedCards.forEach((curCard) => {
-          curCard.isSelected = true;
-        });
-
+        console.log(card);
         setGame((prevState) => ({
           ...prevState,
           selected: selectedCards,
@@ -234,7 +227,7 @@ export default function useCreateGame() {
       });
 
       if (
-        tempDeck.length > 0 &&
+        tempDeck[fromDeckIndex].length > 0 &&
         tempDeck[fromDeckIndex][tempDeck[fromDeckIndex].length - 1].isDown ===
           true
       ) {

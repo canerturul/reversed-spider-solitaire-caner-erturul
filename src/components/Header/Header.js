@@ -35,9 +35,10 @@ function Header({ game, onRestartClick, onUndoGameClick }) {
         <span className="text">{game.score}</span>
       </div>
 
-      <h1 className="title">Spider Solitare</h1>
+      <h1 className="title">Spider Solitaire</h1>
 
       <Button
+        data-testid="restart-button"
         buttonClick={onRestartButtonClick}
         buttonText="Restart"
         icon={restartIcon}

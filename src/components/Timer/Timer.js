@@ -8,9 +8,13 @@ function Timer({ time }) {
     <div className="timer">
       <img className="timer__icon" src={icon} alt="timer icon" />
       <div className="timer__text">
-        <span className="minute">{time.minute}</span>
+        <span data-testid="minute-span" className="minute">
+          {time.minute}
+        </span>
         <span>:</span>
-        <span className="second">{time.second}</span>
+        <span data-testid="second-span" className="second">
+          {time.second}
+        </span>
       </div>
     </div>
   );
