@@ -1,3 +1,5 @@
+@import url("../../styles/variables.css");
+
 .card {
   position: relative;
   cursor: pointer;
@@ -41,15 +43,12 @@
 }
 
 .card-selected {
-  /*   box-shadow: 10px 10px 12px black !important;
-
- */
   box-shadow: 0 14px 34px rgb(246 246 247 / 70%) !important;
-  border: 2px solid rgba(206, 27, 7);
+  border: 2px solid var(--primary-color);
 }
 
 .card:hover {
-  box-shadow: 4px 4px 10px rgba(206, 27, 7);
+  box-shadow: 4px 4px 10px var(--primary-color);
 }
 
 .card-suite-left,
@@ -58,42 +57,33 @@
 }
 
 .heart {
-  background: url("../../assets/heart2.png") #000000;
-  color: rgba(206, 27, 7);
+  background: url("../../assets/heart2.png") var(--secondary-color);
+  color: var(--primary-color);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 50%;
   display: flex;
   justify-content: space-between;
-  border: solid 1px rgba(206, 27, 7);
+  border: solid 1px var(--primary-color);
 }
 
 @media (max-width: 1390px) and (min-width: 1200px) {
-  /* .card-content {
-    font-size: 12px;
-  } */
   .card-selected {
-    border: 2px solid rgba(206, 27, 7);
+    border: 2px solid var(--primary-color);
     box-shadow: none !important;
   }
 }
 
 @media (max-width: 1199px) and (min-width: 781px) {
-  .card-content {
-    font-size: 15px;
-  }
   .card-selected {
-    border: 2px solid rgba(206, 27, 7);
+    border: 2px solid var(--primary-color);
     box-shadow: none !important;
   }
 }
 
 @media (max-width: 780px) {
-  .card-content {
-    font-size: 10px;
-  }
   .card-selected {
-    border: 2px solid rgba(206, 27, 7);
+    border: 2px solid var(--primary-color);
     box-shadow: none !important;
   }
 }

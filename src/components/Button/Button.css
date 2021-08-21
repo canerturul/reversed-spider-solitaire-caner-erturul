@@ -1,14 +1,16 @@
+@import url("../../styles/variables.css");
+
 .btn {
   cursor: pointer;
-  background-color: black;
-  color: rgba(206, 27, 7);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
   transition: box-shadow 1s;
-  border: solid 0.5px rgba(206, 27, 7, 0.4);
+  border: solid 0.5px var(--border-color);
 }
 
 #btn:hover {
-  border: solid 0.5px rgba(206, 27, 7, 0.4);
-  box-shadow: 0 10px 50px 0 rgba(206, 27, 7, 0.4);
+  border: solid 0.5px var(--border-color);
+  box-shadow: 0 10px 50px 0 var(--border-color);
 }
 
 .btn-icon {
