@@ -2,10 +2,20 @@ import { renderHook, act } from "@testing-library/react-hooks";
 import useCreateGame from "./useCreateGame";
 
 describe("useCreateGame Hook", () => {
+  afterAll(() => {
+    jest.useRealTimers();
+  });
   it("should use creategame", () => {
     const { result } = renderHook(() => useCreateGame());
-    const { game, selectCard, restartGame, distributeCards, undoGame } =
-      result.current;
+    const {
+      game,
+      selectCard,
+      moveOperations,
+      moveOperationsForEmptyDeck,
+      restartGame,
+      distributeCards,
+      undoGame,
+    } = result.current;
 
     expect(typeof game).toBe("object");
     expect(selectCard).toBeDefined();
@@ -13,6 +23,29 @@ describe("useCreateGame Hook", () => {
     expect(distributeCards).toBeDefined();
     expect(undoGame).toBeDefined();
   });
+
+  /*  it("should move card when isSelectedCard true", async () => {
+    jest.useFakeTimers();
+
+    const { result } = renderHook(() => useCreateGame());
+    const { game, selectCard, moveOperationsForEmptyDeck } = result.current;
+    const card = game.decks[0][5];
+    const deck = game.decks[0];
+
+    const deck2 = game.decks[1].slice(0, game.decks[1].length);
+
+    act(() => {
+      selectCard(card, deck);
+    });
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+    act(() => {
+      moveOperationsForEmptyDeck(deck2);
+    });
+
+    /*TODO-  expect(game.selectCard).toEqual(card);
+  }); */
 
   it("should select card when isSelectedCard false", async () => {
     const { result } = renderHook(() => useCreateGame());
@@ -25,15 +58,17 @@ describe("useCreateGame Hook", () => {
       selectCard(card, deck, false);
     });
     expect(card.isSelected).toBe(true);
-    /*TODO- expect(game.selectCard).toEqual(card); */
+    /*TODO-  expect(game.selectCard).toEqual(card);*/
   });
 
   it("should not move card", async () => {
     const { result } = renderHook(() => useCreateGame());
     const { game, selectCard } = result.current;
+
     const card = game.decks[0][5];
     const card2 = game.decks[1][5];
     const deck = game.decks[0];
+
     expect(card.isSelected).toBe(false);
 
     act(() => {

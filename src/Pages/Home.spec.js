@@ -1,11 +1,11 @@
 import { render } from "@testing-library/react";
-import useCreateGame from "../hooks/useCreateGame";
+import useCreateGame from "../hooks/useCreateGame/useCreateGame";
 import Home from "./Home";
 
 describe("Home", () => {
-  test("Render Home", () => {
-    const { game, selectCard, restartGame, distributeCards, undoGame } =
-      useCreateGame;
-    render(<Home />);
+  it("render Home component with home classname", () => {
+    const { container } = render(<Home />);
+
+    expect(container.firstElementChild.className.includes("home")).toBe(true);
   });
 });
