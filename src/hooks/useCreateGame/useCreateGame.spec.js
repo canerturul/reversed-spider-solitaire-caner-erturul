@@ -24,30 +24,7 @@ describe("useCreateGame Hook", () => {
     expect(undoGame).toBeDefined();
   });
 
-  /*  it("should move card when isSelectedCard true", async () => {
-    jest.useFakeTimers();
-
-    const { result } = renderHook(() => useCreateGame());
-    const { game, selectCard, moveOperationsForEmptyDeck } = result.current;
-    const card = game.decks[0][5];
-    const deck = game.decks[0];
-
-    const deck2 = game.decks[1].slice(0, game.decks[1].length);
-
-    act(() => {
-      selectCard(card, deck);
-    });
-    act(() => {
-      jest.advanceTimersByTime(1000);
-    });
-    act(() => {
-      moveOperationsForEmptyDeck(deck2);
-    });
-
-    /*TODO-  expect(game.selectCard).toEqual(card);
-  }); */
-
-  it("should select card when isSelectedCard false", async () => {
+  it("should select card when isSelectedCard false", () => {
     const { result } = renderHook(() => useCreateGame());
     const { game, selectCard } = result.current;
     const card = game.decks[0][5];
@@ -58,12 +35,11 @@ describe("useCreateGame Hook", () => {
       selectCard(card, deck, false);
     });
     expect(card.isSelected).toBe(true);
-    /*TODO-  expect(game.selectCard).toEqual(card);*/
   });
 
-  it("should not move card", async () => {
+  it("should not move card", () => {
     const { result } = renderHook(() => useCreateGame());
-    const { game, selectCard } = result.current;
+    const { game, selectCard, moveOperations } = result.current;
 
     const card = game.decks[0][5];
     const card2 = game.decks[1][5];
@@ -72,19 +48,19 @@ describe("useCreateGame Hook", () => {
     expect(card.isSelected).toBe(false);
 
     act(() => {
-      selectCard(card, deck, false);
+      selectCard(card, deck);
     });
 
     expect(card.isSelected).toBe(true);
 
     act(() => {
-      selectCard(card2, deck, false);
+      moveOperations(card2, deck);
     });
 
     expect(card2.isSelected).toBe(false);
   });
 
-  it("should reset game", async () => {
+  it("should reset game", () => {
     const { result } = renderHook(() => useCreateGame());
     const { game, restartGame } = result.current;
 

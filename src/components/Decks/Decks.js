@@ -47,7 +47,7 @@ function Decks({
               <EmptyDeck key={index} />
             </div>
           ) : (
-            <div key={index}>
+            <div key={index} className={`deck${index}`}>
               {deck.map((card, index) => (
                 <div
                   data-testid="my-card"

@@ -10,15 +10,15 @@
   align-items: center;
   height: 5vw;
   box-shadow: var(--border-color) 0px 0px 0px 2px,
-    var(--border-color) 0px 4px 6px -1px, var(--border-color) 0px 1px 0px inset;
+    var(--border-color) 0px 1px 1px 1px, var(--border-color) 0px 1px 0px inset;
 }
 
 .header-element {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: var(--border-color) 0px 0px 0px 2px,
-    var(--border-color) 0px 4px 6px -1px, var(--border-color) 0px 1px 0px inset;
+  box-shadow: var(--border-color) 0px 0px 0px 1px,
+    var(--border-color) 0px 1px 1px -1px, var(--border-color) 0px 1px 0px inset;
   font-size: 1.5vw;
   padding: 0.7vw 1.4vw;
   gap: 0.5vw;
@@ -28,6 +28,7 @@
   height: 2vw;
   width: 2vw;
 }
+
 .title {
   font-size: 2.5vw;
 }

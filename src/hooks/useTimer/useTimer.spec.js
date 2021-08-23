@@ -59,4 +59,17 @@ describe("Timer Hook", () => {
 
     expect(result.current.time.minute).toBe("02");
   });
+
+  it("should be minutes value 10", async () => {
+    jest.useFakeTimers();
+    const { result } = renderHook(() => useTimer());
+
+    expect(result.current.time.counter).toBe(0);
+
+    act(() => {
+      jest.advanceTimersByTime(610000);
+    });
+
+    expect(result.current.time.minute).toBe(10);
+  });
 });

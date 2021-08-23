@@ -19,7 +19,9 @@ function Timer({ time }) {
     </div>
   );
 }
+
 Timer.propTypes = {
   time: PropTypes.object,
 };
+
 export default Timer;

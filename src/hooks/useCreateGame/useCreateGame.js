@@ -17,11 +17,11 @@ export default function useCreateGame() {
     score: 0,
   };
   const [game, setGame] = useState(initialState);
-  const [undo, setUndo] = useState(initialState);
+  const [undo, setUndo] = useState({});
 
   const restartGame = () => {
     setGame(initialState);
-    setUndo(initialState);
+    setUndo({});
     createGame();
   };
 
