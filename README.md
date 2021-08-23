@@ -12,7 +12,7 @@ This project is a reverse order version of the classic spider solitaire game. Th
 
 ![Game Preview](public/assets/Game-Preview.PNG)
 
-## Technolojies
+## Technologies
 
 - ReactJS
 - Jest
