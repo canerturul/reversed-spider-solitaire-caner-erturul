@@ -67,27 +67,6 @@
   border: solid 1px var(--primary-color);
 }
 
-@media (max-width: 1390px) and (min-width: 1200px) {
-  .card-selected {
-    border: 2px solid var(--primary-color);
-    box-shadow: none !important;
-  }
-}
-
-@media (max-width: 1199px) and (min-width: 781px) {
-  .card-selected {
-    border: 2px solid var(--primary-color);
-    box-shadow: none !important;
-  }
-}
-
-@media (max-width: 780px) {
-  .card-selected {
-    border: 2px solid var(--primary-color);
-    box-shadow: none !important;
-  }
-}
-
 @font-face {
   font-family: "Poker";
   src: local("Poker"),
