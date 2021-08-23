@@ -69,6 +69,5 @@
 
 @font-face {
   font-family: "Poker";
-  src: local("Poker"),
-    url(../../assets/font/Blue\ Spirits\ Alt.otf) format("truetype");
+  src: local("Poker"), url(../../assets/font/CARDC___.TTF) format("truetype");
 }
