@@ -1,0 +1,105 @@
+@import url("../../styles/variables.css");
+:root {
+  --card-height: 40vw;
+  --card-width: 30vw;
+}
+
+.landing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.flip-card,
+.front-image {
+  width: var(--card-width);
+  height: var(--card-height);
+  border-radius: 2vw;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: var(--card-width);
+  height: var(--card-height);
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 2vw;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: var(--card-width);
+  height: var(--card-height);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 2vw;
+}
+
+.flip-card-front {
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.flip-card-back {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2vw;
+}
+
+.flip-card-back h1,
+.flip-card-back h2 {
+  margin: 0;
+}
+
+.rules li {
+  text-align: left;
+  list-style: none;
+  font-size: 1.2vw;
+  padding-bottom: 0.5vw;
+}
+ul li::before {
+  content: "\2022";
+  color: var(--primary-color);
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.start-button a {
+  text-decoration: none;
+}
+
+.game-title {
+  font-size: 3vw;
+}
+
+.game-title::after {
+  content: "";
+  display: block;
+  width: 50%;
+  padding-top: 0.5vw;
+  border-bottom: 0.3vw solid var(--primary-color);
+  border-radius: 0.3vw;
+}
+
+.rules-title {
+  font-size: 2.1vw;
+}
+
+.rule-list {
+  padding-left: 3vw;
+}

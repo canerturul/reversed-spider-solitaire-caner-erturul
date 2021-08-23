@@ -10,10 +10,13 @@
 
 #btn:hover {
   border: solid 0.5px var(--border-color);
-  box-shadow: 0 10px 50px 0 var(--border-color);
+  box-shadow: 0 5px 10px 0 var(--border-color);
 }
 
 .btn-icon {
   height: 2vw;
   width: 2vw;
+}
+.displayNone {
+  display: none;
 }

@@ -1,5 +1,4 @@
 import { render } from "@testing-library/react";
-import useCreateGame from "../hooks/useCreateGame/useCreateGame";
 import Home from "./Home";
 
 describe("Home", () => {

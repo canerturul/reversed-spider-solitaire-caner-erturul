@@ -1,7 +1,7 @@
 :root {
-  --primary-color: rgba(206, 27, 7);
+  --primary-color: #fd0000; /* rgba(206, 27, 7); */
   --secondary-color: #000000;
-  --border-color: rgba(206, 27, 7, 0.4);
+  --border-color: #fd0000; /* rgba(206, 27, 7, 0.4); */
   --modal-background-color: rgba(0, 0, 0, 0.3);
   --modal-z-index: 9998;
 }

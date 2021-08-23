@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import useCreateGame from "../hooks/useCreateGame/useCreateGame";
+import useCreateGame from "../../hooks/useCreateGame/useCreateGame";
 
-import Header from "../components/Header/Header";
-import GameOver from "../components/GameOver/GameOver";
-import CardPile from "../components/CardPile/CardPile";
-import SetArea from "../components/SetArea/SetArea";
-import Decks from "../components/Decks/Decks";
+import Header from "../../components/Header/Header";
+import GameOver from "../../components/GameOver/GameOver";
+import CardPile from "../../components/CardPile/CardPile";
+import SetArea from "../../components/SetArea/SetArea";
+import Decks from "../../components/Decks/Decks";
 
 import "./Home.css";
 
