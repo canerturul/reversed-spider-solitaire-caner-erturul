@@ -1,6 +1,6 @@
 @import url("../../styles/variables.css");
 
-.btn {
+.Black {
   cursor: pointer;
   background-color: var(--secondary-color);
   color: var(--primary-color);
@@ -8,7 +8,20 @@
   border: solid 0.5px var(--border-color);
 }
 
-#btn:hover {
+#Black:hover {
+  border: solid 0.5px var(--border-color);
+  box-shadow: 0 5px 10px 0 var(--border-color);
+}
+
+.White {
+  cursor: pointer;
+  background-color: white;
+  color: var(--primary-color);
+  transition: box-shadow 1s;
+  border: solid 0.5px var(--border-color);
+}
+
+#White:hover {
   border: solid 0.5px var(--border-color);
   box-shadow: 0 5px 10px 0 var(--border-color);
 }

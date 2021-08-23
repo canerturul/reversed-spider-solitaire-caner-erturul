@@ -2,13 +2,13 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import "./Card.css";
 
-function Card({ card, isSelected, isDown }) {
+function Card({ variant = "Black", card, isSelected, isDown }) {
   const symbol = "♥";
   return (
     <div
       className={classNames(
         "card",
-        isDown ? "card-down" : card.suit,
+        isDown ? "card-down" : `inner ${card.suit}-${variant}`,
         isSelected && "card-selected"
       )}
     >

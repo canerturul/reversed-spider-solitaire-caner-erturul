@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 
 import "./Button.css";
 
-function Button({ buttonClick, buttonText, icon }) {
+function Button({ variant = "Black", buttonClick, buttonText, icon }) {
   return (
     <button
-      className={classNames("btn header-element", buttonText)}
-      id="btn"
+      className={classNames(variant, "btn header-element", buttonText)}
+      id={variant}
       onClick={buttonClick}
     >
       <img

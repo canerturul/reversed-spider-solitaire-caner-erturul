@@ -1,6 +1,7 @@
 :root {
   --primary-color: #fd0000;
   --secondary-color: #000000;
+  --third-color: #ffffff;
   --border-color: #fd0000;
   --modal-background-color: rgba(0, 0, 0, 0.3);
   --modal-z-index: 9998;

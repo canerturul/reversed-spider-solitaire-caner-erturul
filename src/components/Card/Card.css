@@ -56,15 +56,26 @@
   margin-top: -0.3vw;
 }
 
-.heart {
+.inner {
+  display: flex;
+  justify-content: space-between;
+  border: solid 1px var(--primary-color);
+}
+
+.heart-Black {
   background: url("../../assets/images/heart.png") var(--secondary-color);
   color: var(--primary-color);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 50%;
-  display: flex;
-  justify-content: space-between;
-  border: solid 1px var(--primary-color);
+}
+
+.heart-White {
+  background: url("../../assets/images/heart.png") var(--third-color);
+  color: var(--primary-color);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
 }
 
 @font-face {
