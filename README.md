@@ -10,7 +10,7 @@ This project is a reverse order version of the classic spider solitaire game. Th
 
 ## Preview
 
-![Game Preview](public\assets\Game-Preview.PNG)
+![Game Preview](public/assets/Game-Preview.PNG)
 
 ## Technolojies
 
