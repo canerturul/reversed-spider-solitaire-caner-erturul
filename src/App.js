@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
-import BackgroundImage from "../src/assets/background.jpg";
+import BackgroundImage from "../src/assets/images/background.jpg";
 import { ToastContainer } from "react-toastify";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "./components/ErrorFallback/ErrorFallback";

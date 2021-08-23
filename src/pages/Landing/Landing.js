@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../../components/Button/Button";
 
-import frontImage from "../../assets/card.png";
+import frontImage from "../../assets/images/card.png";
 
 import "./Landing.css";
 import { Link } from "react-router-dom";

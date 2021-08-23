@@ -5,7 +5,7 @@
 .card-pile-down {
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url("../../assets/playing-card.jpg");
+  background-image: url("../../assets/images/playing-card.jpg");
   text-decoration: transparent;
   margin-right: -5.5vw;
   height: 9.3vw !important;

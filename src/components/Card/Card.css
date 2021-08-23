@@ -33,7 +33,7 @@
 .card-down {
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url("../../assets/playing-card.jpg");
+  background-image: url("../../assets/images/playing-card.jpg");
   text-decoration: transparent;
   margin-bottom: -8.5vw;
 }
@@ -57,7 +57,7 @@
 }
 
 .heart {
-  background: url("../../assets/heart2.png") var(--secondary-color);
+  background: url("../../assets/images/heart.png") var(--secondary-color);
   color: var(--primary-color);
   background-repeat: no-repeat;
   background-position: center;
